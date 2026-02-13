@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Proposal 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 420px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: #ff4d6d;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ff2d55;
+    }
+
+    .no {
+      background: #bbb;
+      position: absolute;
+    }
+
+    .hearts span {
+      position: absolute;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      color: red;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes float {
+      from {transform: translateY(100vh); opacity: 1;}
+      to {transform: translateY(-10vh); opacity: 0;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<div class="card">
+  <h1>Hey Val 💕</h1>
+  <p>
+    I just wanted to ask something special...<br><br>
+    Will you be my Valentine? 💘
+  </p>
+
+  <button onclick="yesClick()">Yes 💖</button>
+  <button class="no" onmouseover="moveNo()">No 😅</button>
+
+  <h2 id="message"></h2>
+</div>
+
+<script>
+  function yesClick() {
+    document.getElementById("message").innerHTML =
+      "YAY!!! 💕🥰 You just made my day, Babygirl 💖";
+  }
+
+  function moveNo() {
+    const noBtn = document.querySelector(".no");
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  function createHeart() {
+    const heart = document.createElement("span");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.querySelector(".hearts").appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
